@@ -11,23 +11,23 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 @RestController
 public class HellController {
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@GetMapping("/callHello")
-	@HystrixCommand(fallbackMethod = "defaultCallHello", commandProperties = {                  
-			@HystrixProperty(
-					name="execution.isolation.strategy",      
-					value = "THREAD")    
-			} 
-	)
-	public String callHello() {
-		String result = restTemplate.getForObject("http://localhost:8088/house/hello", String.class);
-		return result;
-	}
+    @GetMapping("/callHello")
+    @HystrixCommand(fallbackMethod = "defaultCallHello", commandProperties = {
+            @HystrixProperty(
+                    name = "execution.isolation.strategy",
+                    value = "THREAD")
+    }
+    )
+    public String callHello() {
+        String result = restTemplate.getForObject("http://localhost:8088/house/hello", String.class);
+        return result;
+    }
 
-	public String defaultCallHello() {
-		return "fail";
-	}
+    public String defaultCallHello() {
+        return "fail";
+    }
 
 }

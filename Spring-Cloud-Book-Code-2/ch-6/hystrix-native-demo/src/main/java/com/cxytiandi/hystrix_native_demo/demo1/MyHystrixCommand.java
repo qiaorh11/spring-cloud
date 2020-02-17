@@ -12,7 +12,7 @@ public class MyHystrixCommand extends HystrixCommand<String> {
 	public MyHystrixCommand(String name) {
 		//super(HystrixCommandGroupKey.Factory.asKey("MyGroup"));
 		
-		/*super(HystrixCommand.Setter                 
+/*		super(HystrixCommand.Setter
 				.withGroupKey(HystrixCommandGroupKey.Factory.asKey("MyGroup"))                 
 				.andCommandPropertiesDefaults(                 		
 					HystrixCommandProperties.Setter()             
@@ -21,21 +21,21 @@ public class MyHystrixCommand extends HystrixCommand<String> {
 			                		
 			             )                 
 			        )        
-			    ); */
+			    );*/
 		 super(HystrixCommand.Setter.withGroupKey(
-		           HystrixCommandGroupKey.Factory.asKey("MyGroup"))                 
-		         .andCommandPropertiesDefaults(     
-		             HystrixCommandProperties.Setter()     
-		             .withExecutionIsolationStrategy(      
-		               HystrixCommandProperties.ExecutionIsolationStrategy.THREAD 
-		             )                 
-		         ).andThreadPoolPropertiesDefaults(    
-		             HystrixThreadPoolProperties.Setter()      
-		               .withCoreSize(10)                
-		 	       .withMaxQueueSize(100)          
-		       	       .withMaximumSize(100)               
+		           HystrixCommandGroupKey.Factory.asKey("MyGroup"))
+		         .andCommandPropertiesDefaults(
+		             HystrixCommandProperties.Setter()
+		             .withExecutionIsolationStrategy(
+		               HystrixCommandProperties.ExecutionIsolationStrategy.THREAD
+		             )
+		         ).andThreadPoolPropertiesDefaults(
+		             HystrixThreadPoolProperties.Setter()
+		               .withCoreSize(10)
+		 	       .withMaxQueueSize(100)
+		       	       .withMaximumSize(100)
 		         )         
-		);       
+		);
 
 
 		this.name = name;
@@ -43,7 +43,7 @@ public class MyHystrixCommand extends HystrixCommand<String> {
 
 	@Override
 	protected String run() {
-		/*try {
+/*		try {
 			Thread.sleep(1000 * 10);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -57,9 +57,9 @@ public class MyHystrixCommand extends HystrixCommand<String> {
 		return "失败了";
 	}
 
-	@Override     
-	protected String getCacheKey() {         
-	  return String.valueOf(this.name); 
+	@Override
+	protected String getCacheKey() {
+	  return String.valueOf(this.name);
 	}
 
 }

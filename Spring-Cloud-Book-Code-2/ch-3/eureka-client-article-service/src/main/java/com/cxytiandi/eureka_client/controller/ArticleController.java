@@ -26,10 +26,14 @@ public class ArticleController {
 		//return discoveryClient.getInstances("eureka-client-user-service");     
 	}
 
-	@GetMapping("/article/callHello") 	
-	public String callHello() { 		
+	/**
+	 * restTemplate 启用 @LoadBalanced 注解后，就不能使用这种方式
+	 * @return
+	 */
+	//@GetMapping("/article/callHello")
+	public String callHello() {
 	    return restTemplate.getForObject(
-			"http://localhost:8081/user/hello", String.class); 	
+			"http://localhost:8083/user/hello", String.class);
 	}
 	
 	@GetMapping("/article/callHello2") 	
