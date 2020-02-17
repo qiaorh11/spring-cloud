@@ -19,7 +19,7 @@ public class FilterConfig {
 	public ErrorFilter errorFilter() {
 		return new ErrorFilter();
 	}
-	
+
 	@Bean
 	public DebugRequestFilter debugRequestFilter() {
 		return new DebugRequestFilter();

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LocalController {
 
-	@GetMapping("/local/{id}")
-	public String local(@PathVariable String id) {
-		return id;
-	}
+    @GetMapping("/local/{id}")
+    public String local(@PathVariable String id) {
+        return id;
+    }
 
 }
